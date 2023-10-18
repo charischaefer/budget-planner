@@ -1,9 +1,23 @@
+--
+-- Drop Tables
+--
+
+SET foreign_key_checks = 0;
+DROP TABLE if exists categories;
+DROP TABLE if exists transactions;
+DROP TABLE if exists users;
+SET foreign_key_checks = 1;
+
+--
+-- Create Tables
+--
+
 CREATE TABLE `categories`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` CHAR(255) NOT NULL
 );
 
-CREATE TABLE `transaction`(
+CREATE TABLE `transactions`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `amount` INT NOT NULL,
     `date` DATE NOT NULL,
@@ -13,11 +27,19 @@ CREATE TABLE `transaction`(
     `user_id` CHAR(255) NOT NULL
 );
 
-CREATE TABLE `user`(
+CREATE TABLE `users`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `username` CHAR(255) NOT NULL,
     `password` CHAR(255) NOT NULL,
     `firstname` CHAR(255) NOT NULL,
     `lastname` CHAR(255) NOT NULL,
+    `email` CHAR(255) NOT NULL,
     `image` CHAR(255) NOT NULL
 );
+
+--
+-- Sample User Insertion
+--
+
+INSERT INTO users (username, password, firstname, lastname, email, image)
+VALUES ('username', '1234', 'Sheldon', 'Cooper', 'username@gmail.com', 'https://google.com');
