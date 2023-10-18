@@ -36,10 +36,3 @@ CREATE TABLE `users`(
     `email` CHAR(255) NOT NULL,
     `image` CHAR(255) NOT NULL
 );
-
---
--- Sample User Insertion
---
-
-INSERT INTO users (username, password, firstname, lastname, email, image)
-VALUES ('username', '1234', 'Sheldon', 'Cooper', 'username@gmail.com', 'https://google.com');
