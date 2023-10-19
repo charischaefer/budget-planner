@@ -1,3 +1,4 @@
+
 import './App.css';
 import {Routes, Route, Link} from "react-router-dom";
 import Home from './components/Home';
@@ -7,9 +8,11 @@ import Categories from './components/Categories';
 
 function App() {
  
+
   return (
     
       <div>
+
         <h1>Buget-planner</h1>
 
         <Routes>
