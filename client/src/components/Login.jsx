@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 function Login() {
@@ -21,8 +21,7 @@ function Login() {
       const { data } = await axios("/api/auth/login", {
         method: "POST",
         data: credentials,
-      });
-      
+      }); 
   
       localStorage.setItem("token", data.token);
       console.log(data.message, data.token);
@@ -59,6 +58,7 @@ function Login() {
           type="text"
           className="form-control mb-2"
         />
+        <br />
         <input
           value={password}
           onChange={handleChange}
