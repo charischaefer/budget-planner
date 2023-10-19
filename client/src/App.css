@@ -3,4 +3,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: Montserrat, sans-serif;
+}
+
+input {
+  font-family: Montserrat, sans-serif;
 }

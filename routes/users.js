@@ -8,6 +8,7 @@ var bcrypt = require("bcrypt");
 const saltRounds = 10;
 const supersecret = process.env.SUPER_SECRET;
 
+// Get all users
 router.get("/", async (req, res) => {
   try {
     const users = await db("SELECT * FROM users");
@@ -18,6 +19,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Register new user
 router.post("/register", async (req, res) => {
   const { username, password, firstname, lastname, email, image } = req.body;
 

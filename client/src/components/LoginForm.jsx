@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function UserForm() {
+function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -34,4 +34,4 @@ function UserForm() {
   );
 }
 
-export default UserForm;
+export default LoginForm;
