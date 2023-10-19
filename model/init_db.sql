@@ -24,7 +24,7 @@ CREATE TABLE `transactions`(
     `source` CHAR(255) NOT NULL,
     `type` CHAR(255) NOT NULL,
     `category_id` INT NOT NULL,
-    `user_id` CHAR(255) NOT NULL
+    `user_id` INT NOT NULL
 );
 
 CREATE TABLE `users`(
