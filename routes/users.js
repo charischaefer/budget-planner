@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   try {
     const users = await db("SELECT * FROM users");
 
-    res.send(users);
+    res.send(users.data);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
