@@ -71,7 +71,8 @@ VALUES
     (20, '2023-10-17', 'Health Clinic', 'Expense', 6, 2),
     (60, '2023-10-15', 'Grocery Store', 'Expense', 3, 3),
     (90, '2023-10-16', 'Gas Station', 'Expense', 2, 3),
-    (35, '2023-10-17', 'Movie Tickets', 'Expense', 9, 3);
+    (35, '2023-10-17', 'Movie Tickets', 'Expense', 9, 3),
+    (1800, '2023-09-30', 'Salary', 'Income', 0, 1);
 
 INSERT INTO `users` (`username`, `password`, `firstname`, `lastname`, `email`, `image`)
 VALUES
