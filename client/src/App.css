@@ -9,3 +9,11 @@
 input {
   font-family: Montserrat, sans-serif;
 }
+
+button {
+  margin: 10px;
+}
+
+input {
+  margin: 1px;
+}
