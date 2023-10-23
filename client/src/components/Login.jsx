@@ -4,21 +4,23 @@ import axios from "axios";
 function Login() {
 
   const [credentials, setCredentials] = useState({
-  username: "test",
-  password: "test",
-});
+    username: "budget",
+    password: "planner",
+  });
 
-  const[data, requestData] = useState(null);
+  const [data, setData] = useState(null);
+
   const { username, password } = credentials;
 
   const handleChange = (e) => {
-    // Add login logic here
     const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value});
+    setCredentials({ ...credentials, [name]: value });
+
   };
 
   const login = async () => {
     try {
+
       const { data } = await axios("/api/users/login", {
         method: "POST",
         data: credentials,
@@ -28,15 +30,35 @@ function Login() {
       localStorage.setItem("token", data.token);
       console.log(data.message, data.token);
     } catch (error){
+
       console.log(error);
     }
   };
 
-  const logout = () => {};
+
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+
+  const requestData = async () => {
+    try {
+      const { data } = await axios("/api/auth/profile", {
+        headers: {
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+  
+      console.log(data.message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   return (
     <div>
       <div>
+
       <input
         value={username}
         onChange={handleChange}
@@ -69,6 +91,7 @@ function Login() {
         <div className="alert">{data}</div>
       </div>
     )}
+
     </div>
   );
 }
