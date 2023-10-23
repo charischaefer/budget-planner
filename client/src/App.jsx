@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import LoginForm from "./components/LoginForm.jsx"
+import Login from "./components/Login.jsx"
 
 function App() {
 
   return (
     <>
       <div>
-        <LoginForm />
+        <Login />
       </div>
     </>
   )
