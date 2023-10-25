@@ -26,10 +26,10 @@ function Login() {
         data: credentials,
       });
 
-      //store it locally
+      // Store it locally
       localStorage.setItem("token", data.token);
       console.log(data.message, data.token);
-    } catch (error){
+    } catch (error) {
 
       console.log(error);
     }
@@ -38,11 +38,12 @@ function Login() {
 
   const logout = () => {
     localStorage.removeItem("token");
+    console.log("Successfully logged out");
   };
 
   const requestData = async () => {
     try {
-      const { data } = await axios("/api/auth/profile", {
+      const { data } = await axios("/api/users/profile", {
         headers: {
           authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -76,8 +77,8 @@ function Login() {
       />
       <br />
       <div className="d-flex gap-2 justify-content-center">
-      <button className="btn btn-primary" onClick={login}>Login</button>
-      <button className="btn btn-outlinr-dark ul-2" onClick={logout}>Logout</button>
+      <button className="btn btn-primary" onClick={login}>Log in</button>
+      <button className="btn btn-outline-dark ul-2" onClick={logout}>Log out</button>
     </div>
     </div>
     <div className="text-center p-4">
