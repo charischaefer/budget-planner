@@ -4,6 +4,7 @@ var jwt = require("jsonwebtoken");
 var db = require("../model/helper.js");
 require("dotenv").config();
 var bcrypt = require("bcrypt");
+var userShouldBeLoggedIn = require("../model/guards/UserShouldBeLoggedIn");
 
 const saltRounds = 10;
 const supersecret = process.env.SUPER_SECRET;
@@ -41,26 +42,26 @@ router.post("/login", async (req, res) => {
   const { username, password } = req.body;
  console.log(req.body);
   try{
-    //select the user from the database based on username
+    // Select the user from the database based on username
     const results = await db(
       `SELECT * FROM users where username = "${username}"`
     );
-    //store it in a variable
+    // Store it in a variable
     const user = results.data[0];
-    //if the user exists
-    if (user){
-      //store the user id in a variable
+    // If the user exists
+    if (user) {
+      // Store the user id in a variable
       const user_id = user.id;
 
-    //compare the password from the request  with the password from the database using bcrypt
-      const correctPassword = await bcrypt.compare(password, user.password); //returns true or false
+    // Compare the password from the request with the password from the database using bcrypt
+      const correctPassword = await bcrypt.compare(password, user.password); // Returns true or false
 
-    //if the password is not correct, throw an error
+    // If the password is not correct, throw an error
       if (!correctPassword) throw new Error("Incorrect password");
 
-    //if its all good, create a token and add the user id to it in the payload object
+    // If its all good, create a token and add the user id to it in the payload object
       var token = jwt.sign({ user_id }, supersecret);
-    //send the token to the client
+    // Send the token to the client
       res.send({ message: "Login successful, here is your token", token});
     } else {
       throw new Error("User does not exist");
@@ -70,12 +71,9 @@ router.post("/login", async (req, res) => {
     }
 });
 
-// router.get("/logout", async (req, res) => {
-
-// });
-
-// router.get("/profile", async () => {
-
-// });
+router.get("/profile", userShouldBeLoggedIn, (req, res) => {
+  let userId = req.user_id;
+  res.send({ userId });
+});
 
 module.exports = router;
