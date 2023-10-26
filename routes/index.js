@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../model/helper.js");
+const userShouldBeLoggedIn = require('../model/guards/UserShouldBeLoggedIn.js');
 
 // GET sum of income
-router.get('/total-income/:userId', async (req, res) => {
-  let userId = req.params.userId;
+router.get('/total-income', userShouldBeLoggedIn, async (req, res) => {
+  let userId = req.user_id;
 
   try {
     let query = `
@@ -14,15 +15,15 @@ router.get('/total-income/:userId', async (req, res) => {
     `;
 
     let results = await db(query);
-    res.status(201).send(results.data);
+    res.status(201).send(results.data[0]);
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
 });
 
 // GET sum of expenses
-router.get('/total-expenses/:userId', async (req, res) => {
-  let userId = req.params.userId;
+router.get('/total-expenses', userShouldBeLoggedIn, async (req, res) => {
+  let userId = req.user_id;
 
   try {
     let query = `
@@ -32,7 +33,7 @@ router.get('/total-expenses/:userId', async (req, res) => {
     `;
   
     let results = await db(query);
-    res.status(201).send(results.data);
+    res.status(201).send(results.data[0]);
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
