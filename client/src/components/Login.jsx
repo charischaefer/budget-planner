@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-//import axios from "axios";
+import axios from "axios";
 
 function Login() {
 
   const [credentials, setCredentials] = useState({
-    username: "budget",
-    password: "planner",
+    username: "pavtest02",
+    password: "test!34",
   });
 
   const [data, setData] = useState(null);
@@ -42,7 +42,7 @@ function Login() {
 
   const requestData = async () => {
     try {
-      const { data } = await axios("/api/auth/profile", {
+      const { data } = await axios("/api/users/profile", {
         headers: {
           authorization: "Bearer " + localStorage.getItem("token"),
         },
