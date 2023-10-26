@@ -40,8 +40,8 @@ router.get('/total-expenses', userShouldBeLoggedIn, async (req, res) => {
 });
 
 // GET transactions by category
-router.get('/transactions-by-category/:userId/:categoryId', async (req, res) => {
-  let userId = req.params.userId;
+router.get('/transactions-by-category/:categoryId', userShouldBeLoggedIn, async (req, res) => {
+  let userId = req.user_id;
   let categoryId = req.params.categoryId;
 
   try {
@@ -59,8 +59,8 @@ router.get('/transactions-by-category/:userId/:categoryId', async (req, res) => 
 });
 
 // GET sum by category
-router.get('/expenses-by-category/:userId/:categoryId', async (req, res) => {
-  let userId = req.params.userId;
+router.get('/expenses-by-category/:categoryId', userShouldBeLoggedIn, async (req, res) => {
+  let userId = req.user_id;
   let categoryId = req.params.categoryId;
 
   try {
