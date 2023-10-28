@@ -4,7 +4,7 @@ var jwt = require("jsonwebtoken");
 var db = require("../model/helper.js");
 require("dotenv").config();
 var bcrypt = require("bcrypt");
-var userShouldBeLoggedIn = require("../model/guards/UserShouldBeLoggedIn");
+var userShouldBeLoggedIn = require("../guards/UserShouldBeLoggedIn.js");
 
 const saltRounds = 10;
 const supersecret = process.env.SUPER_SECRET;
@@ -72,8 +72,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/profile", userShouldBeLoggedIn, (req, res) => {
-  let userId = req.user_id;
-  res.send({ userId });
+  res.send({
+    message: "Here is the protected data for user " + req.user_id,
+  });
 });
 
 module.exports = router;
