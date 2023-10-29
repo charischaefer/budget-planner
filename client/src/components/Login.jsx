@@ -38,7 +38,6 @@ function Login() {
     }
   };
 
-
   const logout = () => {
     localStorage.removeItem("token");
     setLogoutMessage("Successfully logged out");
@@ -58,7 +57,6 @@ function Login() {
       console.log(error);
     }
   };
-
 
   return (
     <div>

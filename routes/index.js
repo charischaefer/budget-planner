@@ -60,6 +60,16 @@ router.get('/transactions-by-type/:transactionType', userShouldBeLoggedIn, async
   }
 });
 
+// GET all categories
+router.get('/categories', async (req, res) => {
+  try {
+    let results = await db('SELECT * FROM categories');
+    res.status(200).send(results.data);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
 // GET transactions by category
 router.get('/transactions-by-category/:categoryId', userShouldBeLoggedIn, async (req, res) => {
   let userId = req.user_id;
@@ -94,7 +104,27 @@ router.get('/expenses-by-category/:categoryId', userShouldBeLoggedIn, async (req
     `;
 
     let results = await db(query);
-    res.status(200).send(results.data[0]);
+    res.status(200).send(results.data);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
+// Get category percentages
+router.get('/category-percentages', userShouldBeLoggedIn, async (req, res) => {
+  let userId = req.user_id;
+
+  try {
+    let query = `
+      SELECT c.name AS category, (SUM(t.amount) / (SELECT SUM(amount) FROM transactions WHERE user_id = ${userId} AND type = 'Expense')) * 100 AS percentage
+      FROM categories c
+      LEFT JOIN transactions t ON c.id = t.category_id
+      WHERE t.user_id = ${userId} AND t.type = 'Expense'
+      GROUP BY c.id;
+    `;
+
+    let results = await db(query);
+    res.status(200).send(results.data);
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
