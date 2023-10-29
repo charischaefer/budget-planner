@@ -1,14 +1,17 @@
 --
 -- Drop Tables
 --
+
 SET foreign_key_checks = 0;
 DROP TABLE if exists categories;
 DROP TABLE if exists transactions;
 DROP TABLE if exists users;
 SET foreign_key_checks = 1;
+
 --
 -- Create Tables
 --
+
 CREATE TABLE `categories`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` CHAR(255) NOT NULL
@@ -55,19 +58,19 @@ VALUES
 
 INSERT INTO `transactions` (`amount`, `date`, `source`, `type`, `category_id`, `user_id`)
 VALUES
-    (50, '2023-10-15', 'Grocery Store', 'Expense', 3, 1),
-    (100, '2023-10-16', 'Electricity Bill', 'Expense', 4, 1),
-    (30, '2023-10-17', 'Movie Tickets', 'Expense', 9, 1),
-    (40, '2023-10-15', 'Gas Station', 'Expense', 2, 1),
-    (25, '2023-10-16', 'Pharmacy', 'Expense', 6, 1),
-    (75, '2023-10-17', 'Restaurant', 'Expense', 3, 2),
-    (120, '2023-10-15', 'Internet Bill', 'Expense', 4, 2),
-    (50, '2023-10-16', 'Public Transport', 'Expense', 2, 2),
-    (20, '2023-10-17', 'Health Clinic', 'Expense', 6, 2),
-    (60, '2023-10-15', 'Grocery Store', 'Expense', 3, 3),
-    (90, '2023-10-16', 'Gas Station', 'Expense', 2, 3),
-    (35, '2023-10-17', 'Movie Tickets', 'Expense', 9, 3),
-    (1800, '2023-09-30', 'Salary', 'Income', 0, 1);
+    (50, '2023-10-15', 'Grocery Store', 'Expense', 3, 4),
+    (100, '2023-10-16', 'Electricity Bill', 'Expense', 4, 4),
+    (30, '2023-10-17', 'Movie Tickets', 'Expense', 9, 4),
+    (40, '2023-10-15', 'Gas Station', 'Expense', 2, 4),
+    (25, '2023-10-16', 'Pharmacy', 'Expense', 6, 4),
+    (75, '2023-10-17', 'Restaurant', 'Expense', 3, 4),
+    (120, '2023-10-15', 'Internet Bill', 'Expense', 4, 4),
+    (50, '2023-10-16', 'Public Transport', 'Expense', 2, 4),
+    (20, '2023-10-17', 'Health Clinic', 'Expense', 6, 4),
+    (60, '2023-10-15', 'Grocery Store', 'Expense', 3, 4),
+    (90, '2023-10-16', 'Gas Station', 'Expense', 2, 4),
+    (35, '2023-10-17', 'Movie Tickets', 'Expense', 9, 4),
+    (1800, '2023-09-30', 'Salary', 'Income', 0, 4);
 
 INSERT INTO `users` (`username`, `password`, `firstname`, `lastname`, `email`, `image`)
 VALUES
