@@ -5,8 +5,32 @@ import "./TransactionOverview.css";
 export default function TransactionOverview({ transactionType }) {
   const [transactions, setTransactions] = useState([]);
 
+  const categoriesMap = {
+    0: '💲',
+    1: '🏡',
+    2: '🚗',
+    3: '🍕',
+    4: '💡',
+    5: '🛡️',
+    6: '🌡️',
+    7: '💰',
+    8: '💳',
+    9: '🎥',
+    10: '✈️',
+    11: '👶',
+    12: '💅',
+    13: '🐾',
+    14: '🧩'
+  };
+
+  // Format the date
+  const formatDate = (dateStr) => {
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return new Date(dateStr).toLocaleDateString("en-US", options);
+  };
+
   useEffect(() => {
-    // Get the last three transactions of the specified type
+    // Get last three transactions of specified type
     const getTransactions = async (userId) => {
       try {
         const { data } = await axios(`/api/transactions-by-type/${transactionType}`, {
@@ -47,9 +71,9 @@ export default function TransactionOverview({ transactionType }) {
                   ${transaction.amount.toFixed(2)}
                 </span>
               </td>
-              <td>{transaction.date}</td>
+              <td>{formatDate(transaction.date)}</td>
               <td>{transaction.source}</td>
-              <td>{transaction.category_id}</td>
+              <td>{categoriesMap[transaction.category_id]}</td>
             </tr>
           ))}
         </tbody>
