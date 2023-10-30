@@ -4,7 +4,7 @@ var jwt = require("jsonwebtoken");
 var db = require("../model/helper.js");
 require("dotenv").config();
 var bcrypt = require("bcrypt");
-var userShouldBeLoggedIn = require("../model/guards/UserShouldBeLoggedIn");
+var userShouldBeLoggedIn = require("../guards/UserShouldBeLoggedIn.js");
 
 const saltRounds = 10;
 const supersecret = process.env.SUPER_SECRET;

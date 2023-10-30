@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var transactionsRouter = require('./routes/transactions');
 
 const cors = require('cors');
 var app = express();
@@ -18,5 +19,6 @@ app.use(cors());
 
 app.use('/api', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/transactions', transactionsRouter)
 
 module.exports = app;

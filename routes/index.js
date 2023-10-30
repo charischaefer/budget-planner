@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../model/helper.js");
-const userShouldBeLoggedIn = require('../model/guards/UserShouldBeLoggedIn.js');
+const userShouldBeLoggedIn = require('../guards/UserShouldBeLoggedIn.js');
 
 // GET sum of income
 router.get('/total-income', userShouldBeLoggedIn, async (req, res) => {
