@@ -33,7 +33,7 @@ export default function Categories() {
                         >
                           <option selected>Choose...</option>
                           {categories.map((c) => (
-                            <option value={c.id}>{c.categoryName}</option>
+                            <option value={c.id} key ={c.id}>{c.categoryName}</option>
 
                           ))}
                         </select>

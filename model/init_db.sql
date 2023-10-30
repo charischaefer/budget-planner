@@ -1,14 +1,17 @@
 --
 -- Drop Tables
 --
+
 SET foreign_key_checks = 0;
 DROP TABLE if exists categories;
 DROP TABLE if exists transactions;
 DROP TABLE if exists users;
 SET foreign_key_checks = 1;
+
 --
 -- Create Tables
 --
+
 CREATE TABLE `categories`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` CHAR(255) NOT NULL

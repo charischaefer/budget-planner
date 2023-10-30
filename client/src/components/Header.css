@@ -8,6 +8,7 @@
   align-items: center;
   padding: 1rem;
   position: fixed;
+  height: 50px;
 }
 
 h1 {
@@ -28,6 +29,7 @@ h1 {
 
 .logo {
   float: left;
+  margin-bottom: 30px;
 }
 
 a {
