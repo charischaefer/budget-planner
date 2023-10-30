@@ -10,13 +10,14 @@ export default function Categories() {
         setCategories(event.target.value);
     };
 
-    //A function to fetch the list of Categories
+    //Create A function to fetch the list of Categories
     const getCategories = async() => {
         const response = await fetch('/api/categories');
         const data = await response.json();
         console.log(data);
         setCategories(data);
     };
+
 
     useEffect(() => {
         getCategories();
