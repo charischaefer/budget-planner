@@ -72,8 +72,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/profile", userShouldBeLoggedIn, (req, res) => {
-  let userId = req.user_id;
-  res.send({ userId });
+  res.send({
+    message: "Here is the protected data for user " + req.user_id,
+  });
 });
 
 module.exports = router;
