@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
 
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
@@ -11,6 +11,8 @@ import Categories from './components/Categories';
 
 
 function App() {
+
+
   return (
     
       <div>
@@ -23,6 +25,8 @@ function App() {
           <Route path="/home/transactions" element={<Transactions />} />
           <Route path="/home/categories" element={<Categories />} />
         </Routes>
+
+        <Transactions />
 
         <Footer />
 
