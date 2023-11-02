@@ -1,43 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { PieChart, Pie, Cell, Tooltip, Label } from "recharts";
 
 export default function Categories() {
+    const [categoryData, setCategoryData] = useState(null);
 
-    //Show a list of Categories when I load the page
+    // Get category percentages
+    const getCategoryPercentages = async (userId) => {
+        try {
+            const { data } = await axios("/api/category-percentages", {
+                headers: {
+                    authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            });
 
-    //A state to store the list of Categories
-    const [ categories, setCategories ] = useState([]);
-    const handleChange = (event) => {
-        setCategories(event.target.value);
+            setCategoryData(data);
+        } catch (error) {
+            console.log(error);
+        }
     };
-
-    //Create A function to fetch the list of Categories
-    const getCategories = async() => {
-        const response = await fetch('/api/categories');
-        const data = await response.json();
-        console.log(data);
-        setCategories(data);
-    };
-
 
     useEffect(() => {
-        getCategories();
+        getCategoryPercentages();
     }, []);
+
+    const COLORS = ['#E57373', '#81C784', '#64B5F6', '#FFD54F', '#FF8A65', '#F06292', '#4DB6AC', '#7986CB', '#A1887F', '#90A4AE', '#FFB74D', '#4DD0E1', '#FF80AB', '#B39DDB'];
 
     return (
         <div>
-            <h1>Categories</h1>                      
-                       <select
-                        className="custom-select"
-                          id="inputGroupSelect01"
-                          onChange={handleChange}
-                          name="categoryId"
-                        >
-                          <option selected>Choose...</option>
-                          {categories.map((c) => (
-                            <option value={c.id} key={c.id}>{c.categoryName}</option>
-
-                          ))}
-                        </select>
+          <h1>Categories</h1>
+          {categoryData && categoryData.length > 0 ? (
+            <PieChart width={500} height={500}>
+              <Pie dataKey="percentage" data={categoryData} cx="50%" cy="50%" outerRadius={150} fill="#8884d8" nameKey="category">
+                {categoryData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip formatter={(value, name) => [value.toFixed(2) + ' %', name]} />
+              <Label content={({ value }) => `${value}%`} position="center" />
+            </PieChart>
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
-    );
-}
+      );
+    }
