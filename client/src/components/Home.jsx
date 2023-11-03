@@ -4,6 +4,7 @@ import { BarChart, Bar, Cell } from 'recharts';
 import "./Home.css";
 import TransactionOverview from "./TransactionOverview";
 
+
 export default function Home() {
     const [totalIncome, setTotalIncome] = useState(null);
     const [totalExpenses, setTotalExpenses] = useState(null);

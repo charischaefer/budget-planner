@@ -8,7 +8,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Transactions from './components/Transactions';
 import Categories from './components/Categories';
-
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/home/transactions" element={<Transactions />} />
           <Route path="/home/categories" element={<Categories />} />
+          <Route path="/Profile" element={<Profile />} />
         </Routes>
 
         <Footer />

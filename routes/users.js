@@ -71,10 +71,9 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.get("/profile", userShouldBeLoggedIn, (req, res) => {
-  res.send({
-    message: "Here is the protected data for user " + req.user_id,
-  });
+router.get("/profile", userShouldBeLoggedIn, async(req, res) => {
+  const result = await db(`SELECT * FROM users WHERE id = ${req.user_id}`);
+  res.send(result.data[0]);
 });
 
 module.exports = router;
