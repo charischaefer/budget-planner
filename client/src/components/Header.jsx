@@ -9,8 +9,10 @@ function Header() {
         <h1>Budget Planner</h1>
       </div>
       <nav className="nav">
-        <ul className="nav-list">
+        <ul className="nav-list"> 
+          
           <li className="nav-item"><Link to="/home">Home</Link></li>
+          <li className="nav-item"><Link to="/login">Login</Link></li>
           <li className="nav-item"><Link to="/home/transactions">Transactions</Link></li>
           <li className="nav-item"><Link to="/home/categories">Categories</Link></li>
           <li className="nav-item"><Link to="/">Account</Link></li>

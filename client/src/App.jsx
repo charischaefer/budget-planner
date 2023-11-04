@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Transactions from './components/Transactions';
 import Categories from './components/Categories';
+import Register from './components/Register';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
           <Route path="/home/transactions" element={<Transactions />} />
           <Route path="/home/categories" element={<Categories />} />
