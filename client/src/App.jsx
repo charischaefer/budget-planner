@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Header from "./components/Header.jsx";
@@ -9,6 +9,8 @@ import Transactions from './components/Transactions';
 import Categories from './components/Categories';
 
 function App() {
+
+
   return (
       <div>
         <Header />
@@ -19,6 +21,8 @@ function App() {
           <Route path="/home/transactions" element={<Transactions />} />
           <Route path="/home/categories" element={<Categories />} />
         </Routes>
+
+        <Transactions />
 
         <Footer />
       </div> 
