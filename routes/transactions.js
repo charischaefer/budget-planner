@@ -10,15 +10,16 @@ const userShouldBeLoggedIn = require("../guards/UserShouldBeLoggedIn.js")
 
 // Get all transactions
 router.get('/transactions', userShouldBeLoggedIn, async (req, res) => {
-  const userId = (req.user_id);
-      try {
-      const transactions = await db(`SELECT * FROM transactions WHERE id = ${userId}`);
-      res.send(transactions.data); 
-    } catch (err) {
-      res.status(500).send({ error: err.message });
-    }
+  const userId = req.user_id;
+
+  try {
+    const transactions = await db(`SELECT * FROM transactions WHERE user_id = ${userId} ORDER BY date DESC`);
+    res.send(transactions.data); 
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
   });
-  
+
   // Get transaction by ID
   router.get('/transactions/:id', userShouldBeLoggedIn, async (req, res) => {
     const transactionId = (req.params.id);
@@ -37,8 +38,8 @@ router.get('/transactions', userShouldBeLoggedIn, async (req, res) => {
   
   // Create a new transaction
   router.post('/transactions', userShouldBeLoggedIn, async (req, res) => {
-const { amount, date, source, category_id } = req.body;
-const type = amount > 0 ? 'income' : 'expense'
+const { amount, date, source, type, category_id } = req.body;
+// const type = amount > 0 ? 'income' : 'expense'
     try {
       // Insert the new transaction into the database
       const result = await db(`INSERT INTO transactions (amount, date, source, type, category_id, user_id)
@@ -46,7 +47,7 @@ const type = amount > 0 ? 'income' : 'expense'
       // console.log('console log'+result);
       //const insertedTransaction = await db(`SELECT * FROM transactions WHERE id = ${result.id}`);
 
-      res.status(201).send({messsage: 'Transaction added' }); 
+      res.status(201).send({message: 'Transaction added' }); 
 
     } catch (err) {
       res.status(400).send({ error: err.message });
@@ -75,8 +76,9 @@ const type = amount > 0 ? 'income' : 'expense'
   // Delete a transaction by ID
   router.delete('/transactions/:id', userShouldBeLoggedIn, async (req, res, next) =>{
     let { id } = req.params;
+    const userId = req.user_id;
+
     try {
-      
       let results = await db(`SELECT * FROM transactions WHERE id = ${id}`);
       if (results.data.length === 0) {
         res.status(404).send({ error: "Transaction not found"}); 
@@ -84,7 +86,7 @@ const type = amount > 0 ? 'income' : 'expense'
         //delete
         await db(`DELETE FROM transactions WHERE id = ${id}`);
       // Return updated lists
-      let results = await db(`SELECT * FROM transactions`);
+      let results = await db(`SELECT * FROM transactions WHERE user_id = ${userId} ORDER BY date DESC`);
       res.send(results.data);;
       }
     } catch (err) {

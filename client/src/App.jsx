@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
@@ -13,9 +12,9 @@ function App() {
  
   
   return (
-
       <div>
-        <Header/>
+        <Header />
+
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
@@ -29,9 +28,7 @@ function App() {
         </Styles> */}
 
         <Footer />
-
-      </div>
-      
+      </div> 
   );
 }
 
