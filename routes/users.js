@@ -39,8 +39,8 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { username, password, firstname, lastname, email, image } = req.body;
-
+  const { username, password } = req.body;
+ console.log(req.body);
   try{
     // Select the user from the database based on username
     const results = await db(

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
 
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
@@ -11,6 +11,8 @@ import Categories from './components/Categories';
 import Profile from "./components/Profile";
 
 function App() {
+
+
   return (
     
       <div>
@@ -24,6 +26,8 @@ function App() {
           <Route path="/home/categories" element={<Categories />} />
           <Route path="/Profile" element={<Profile />} />
         </Routes>
+
+        <Transactions />
 
         <Footer />
 
