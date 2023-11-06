@@ -9,8 +9,8 @@ import Transactions from './components/Transactions';
 import Categories from './components/Categories';
 
 function App() {
-
-
+ 
+  
   return (
       <div>
         <Header />
@@ -23,6 +23,9 @@ function App() {
         </Routes>
 
         <Transactions />
+        {/* <Styles>
+        <Table columns={columns} data={data} />
+        </Styles> */}
 
         <Footer />
       </div> 
