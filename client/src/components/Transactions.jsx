@@ -89,6 +89,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./TransactionOverview.css";
+import NewTransaction from "./NewTransaction";
 
 export default function TransactionOverview({ transactionType }) {
   const [transactions, setTransactions] = useState([]);
@@ -138,34 +139,35 @@ export default function TransactionOverview({ transactionType }) {
 
   return (
     <div className="TransactionOverview">
-      <table>
-        <thead>
-          <tr>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>Source</th>
-            <th>Category</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>
-                <span
-                  style={{
-                    color: transaction.type === "Income" ? "green" : "red",
-                  }}
-                >
-                  ${transaction.amount.toFixed(2)}
-                </span>
-              </td>
-              <td>{formatDate(transaction.date)}</td>
-              <td>{transaction.source}</td>
-              <td>{categoriesMap[transaction.category_id]}</td>
+        <NewTransaction />
+        <table>
+            <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Source</th>
+                <th>Category</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+            {transactions.map((transaction) => (
+                <tr key={transaction.id}>
+                <td>
+                    <span
+                    style={{
+                        color: transaction.type === "Income" ? "green" : "red",
+                    }}
+                    >
+                    ${transaction.amount.toFixed(2)}
+                    </span>
+                </td>
+                <td>{formatDate(transaction.date)}</td>
+                <td>{transaction.source}</td>
+                <td>{categoriesMap[transaction.category_id]}</td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
     </div>
   );
 }
