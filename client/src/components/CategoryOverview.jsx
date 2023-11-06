@@ -39,9 +39,6 @@ export default function CategoryOverview({ categoryName }) {
           },
         });
 
-        // Log the transactions to check the data
-        console.log("Transactions data:", data);
-
         setTransactions(data);
       } catch (error) {
         console.log(error);

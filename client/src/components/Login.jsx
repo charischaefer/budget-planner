@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [credentials, setCredentials] = useState({
-    username: "test1",
-    password: "test1",
+    username: "",
+    password: "",
   });
 
   const [data, setData] = useState(null);
@@ -67,6 +67,7 @@ function Login() {
           name="username"
           type="text"
           className="form-control mb-2"
+          placeholder="budget"
         />
         <br />
         <input
@@ -75,6 +76,7 @@ function Login() {
           name="password"
           type="password"
           className="form-control mb-2"
+          placeholder="planner"
         />
         <br />
         <div className="d-flex gap-2 justify-content-center">
