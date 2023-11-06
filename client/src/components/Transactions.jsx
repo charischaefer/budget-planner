@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import NewTransaction from "./NewTransaction.jsx";
 import axios from 'axios';
 
-
 export default function Transactions() {
-
     const [ transactions, setTransactions] = useState([]);
 
     useEffect(() => {
@@ -27,8 +26,8 @@ export default function Transactions() {
       }, []);
 
     return (
+        <NewTransaction />
         <div>
-            <h1>Transactions</h1>
             <table>
                 <thead>
                     <tr>
