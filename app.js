@@ -19,10 +19,6 @@ app.use(cors());
 
 app.use('/api', indexRouter);
 app.use('/api/users', usersRouter);
-<<<<<<< HEAD
 app.use('/api/transactions', transactionsRouter)
-=======
-app.use('/api/transactions', transactionsRouter);
->>>>>>> 7cec4f33f6485870f21619f623bf9f2fc2f95e7f
 
 module.exports = app;

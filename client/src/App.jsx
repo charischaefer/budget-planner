@@ -22,11 +22,6 @@ function App() {
           <Route path="/home/categories" element={<Categories />} />
         </Routes>
 
-        <Transactions />
-        {/* <Styles>
-        <Table columns={columns} data={data} />
-        </Styles> */}
-
         <Footer />
       </div> 
   );
