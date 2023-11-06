@@ -77,7 +77,7 @@ router.get('/transactions-by-category/:categoryId', userShouldBeLoggedIn, async 
 
   try {
     let query = `
-    SELECT id, amount, date, source, type
+    SELECT id, amount, date, source, type, category_id
     FROM transactions
     WHERE user_id = ${userId} AND category_id = ${categoryId};
     `;
@@ -110,13 +110,13 @@ router.get('/expenses-by-category/:categoryId', userShouldBeLoggedIn, async (req
   }
 });
 
-// Get category percentages
+// GET category percentages
 router.get('/category-percentages', userShouldBeLoggedIn, async (req, res) => {
   let userId = req.user_id;
 
   try {
     let query = `
-      SELECT c.name AS category, (SUM(t.amount) / (SELECT SUM(amount) FROM transactions WHERE user_id = ${userId} AND type = 'Expense')) * 100 AS percentage
+      SELECT c.id AS category_id, c.name AS category, (SUM(t.amount) / (SELECT SUM(amount) FROM transactions WHERE user_id = ${userId} AND type = 'Expense')) * 100 AS percentage
       FROM categories c
       LEFT JOIN transactions t ON c.id = t.category_id
       WHERE t.user_id = ${userId} AND t.type = 'Expense'

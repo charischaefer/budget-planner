@@ -17,7 +17,7 @@ export default function Home() {
                 },
             });
 
-            setTotalIncome(data.totalIncome.toFixed(2));
+            setTotalIncome(data.totalIncome?.toFixed(2));
         } catch (error) {
             console.log(error);
         }
