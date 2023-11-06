@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 export default function Transactions() {
 
     const [ transactions, setTransactions] = useState([]);
@@ -32,19 +31,39 @@ export default function Transactions() {
             <table>
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>amount</th>
-                        <th>date</th>
-                        <th>source</th>
-                        <th>type</th>
-                        <th>category_id</th>
-                        <th>user_id</th>
+                        
+                        <th>
+                            amount
+                            { transactions && transactions.map(transaction => (<p key={transaction.id} >{transaction.amount} </p>))}
+                        </th>
+                      
+                        <th>
+                            date
+                            { transactions && transactions.map(transaction => (<p key={transaction.id} >{transaction.date} </p>))}
+                        </th>
+                      
+                        <th>
+                          source
+                          { transactions && transactions.map(transaction => (<p key={transaction.id} >{transaction.source} </p>))}
+                        </th>
+                      
+                        <th>
+                          type
+                          { transactions && transactions.map(transaction => (<p key={transaction.id} >{transaction.type} </p>))}
+                        </th>
+            
+                        <th>
+                          category_id
+                          { transactions && transactions.map(transaction => (<p key={transaction.id} >{transaction.category_id} </p>))}
+                        </th>
+
+                        <th>
+                          user_id
+                          { transactions && transactions.map(transaction => (<p key={transaction.id} >{transaction.user_id} </p>))}
+                        </th>
                     </tr>
                 </thead>
-                <tbody>
-                    {/* Iterate through the transactions array and render a unique transaction component for each categories object in the array*/}
-                    { transactions && transactions.map(transaction => (<p key={transaction.id} >{transaction.amount} </p>))}
-                </tbody>
+               
             </table>
         </div>
     );

@@ -9,16 +9,13 @@ import Login from './components/Login';
 import Transactions from './components/Transactions';
 import Categories from './components/Categories';
 
-
 function App() {
-
-
+ 
+  
   return (
-    
+
       <div>
-
-        <Header />
-
+        <Header/>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
@@ -27,6 +24,9 @@ function App() {
         </Routes>
 
         <Transactions />
+        {/* <Styles>
+        <Table columns={columns} data={data} />
+        </Styles> */}
 
         <Footer />
 
