@@ -1,0 +1,45 @@
+.CategoryOverview {
+  margin-bottom: 40px;
+}
+
+.CategoryOverview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.CategoryOverview thead {
+  background-color: #f2f2f2;
+}
+
+.CategoryOverview th {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  text-align: center;
+}
+
+.CategoryOverview tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.CategoryOverview td {
+  padding: 0.5rem;
+}
+
+.CategoryOverview tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.CategoryOverview td:nth-child(1) {
+  font-weight: bold;
+}
+
+.income-row {
+  color: green;
+}
+
+.expense-row {
+  color: red;
+}

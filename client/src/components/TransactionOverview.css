@@ -1,0 +1,45 @@
+.TransactionOverview {
+  margin-bottom: 40px;
+}
+
+.TransactionOverview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.TransactionOverview thead {
+  background-color: #f2f2f2;
+}
+
+.TransactionOverview th {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  text-align: center;
+}
+
+.TransactionOverview tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.TransactionOverview td {
+  padding: 0.5rem;
+}
+
+.TransactionOverview tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.TransactionOverview td:nth-child(1) {
+  font-weight: bold;
+}
+
+.income-row {
+  color: green;
+}
+
+.expense-row {
+  color: red;
+}
