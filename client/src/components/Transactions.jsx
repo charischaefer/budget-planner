@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./TransactionOverview.css";
+import "./Transactions.css";
 import NewTransaction from "./NewTransaction";
 
-export default function Transactions({ transactionType }) {
+export default function Transactions() {
   const [transactions, setTransactions] = useState([]);
 
   const categoriesMap = {
@@ -47,10 +47,10 @@ export default function Transactions({ transactionType }) {
     };
 
     getTransactions();
-  }, [transactionType]);
+  }, []);
 
   return (
-    <div className="TransactionOverview">
+    <div className="Transactions">
         <h1>Transactions</h1>
         <NewTransaction />
         <table>

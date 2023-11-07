@@ -1,39 +1,43 @@
-.CategoryOverview {
+.Transactions {
   margin-bottom: 40px;
 }
 
-.CategoryOverview table {
+.Transactions h1 {
+  margin-bottom: 40px;
+}
+
+.Transactions table {
   width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
   text-align: center;
-  margin-bottom: 130px;
+  margin-top: 40px;
 }
 
-.CategoryOverview thead {
+.Transactions thead {
   background-color: #f2f2f2;
 }
 
-.CategoryOverview th {
+.Transactions th {
   padding: 0.5rem;
   text-align: left;
   border-bottom: 2px solid #ddd;
   text-align: center;
 }
 
-.CategoryOverview tr {
+.Transactions tr {
   border-bottom: 1px solid #ddd;
 }
 
-.CategoryOverview td {
+.Transactions td {
   padding: 0.5rem;
 }
 
-.CategoryOverview tr:nth-child(even) {
+.Transactions tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.CategoryOverview td:nth-child(1) {
+.Transactions td:nth-child(1) {
   font-weight: bold;
 }
 
