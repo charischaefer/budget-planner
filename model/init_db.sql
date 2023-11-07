@@ -77,3 +77,5 @@ VALUES
     ('user1', 'password1', 'Sheldon', 'Cooper', 'sheldon.cooper@email.com', 'user1.jpg'),
     ('user2', 'password2', 'Hermione', 'Granger', 'hermione.granger@email.com', 'user2.jpg'),
     ('user3', 'password3', 'Bill', 'Gates', 'bill.gates@email.com', 'user3.jpg');
+   
+    
