@@ -61,22 +61,26 @@ function Login() {
   return (
     <div>
       <div>
+        <label>Username</label>
         <input
           value={username}
           onChange={handleChange}
           name="username"
           type="text"
           className="form-control mb-2"
-          placeholder="budget"
+          placeholder="username"
+          
         />
         <br />
+        <label>Password</label>
         <input
           value={password}
           onChange={handleChange}
           name="password"
           type="password"
           className="form-control mb-2"
-          placeholder="planner"
+          placeholder="password"
+          
         />
         <br />
         <div className="d-flex gap-2 justify-content-center">
@@ -85,10 +89,16 @@ function Login() {
         </div>
       </div>
       <div className="text-center p-4">
+        <button className="btn btn-outline-primary" onClick={()=>{login,navigate('/register',{replace:true})}}>
+          Register
+        </button>
+      </div>
+      <div className="text-center p-4">
         <button className="btn btn-outline-primary" onClick={requestData}>
           Request protected data
         </button>
       </div>
+      
 
       {loginMessage && (
         <div className="text-center p-4">
