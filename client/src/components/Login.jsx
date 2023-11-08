@@ -11,7 +11,6 @@ function Login() {
   const [data, setData] = useState(null);
   const [loginMessage, setLoginMessage] = useState("");
   const [logoutMessage, setLogoutMessage] = useState("");
-
   const { username, password } = credentials;
   const navigate = useNavigate();
 

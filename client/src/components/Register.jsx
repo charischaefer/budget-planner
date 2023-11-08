@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import './register.css';
 import { useNavigate } from "react-router-dom";
+
 function Register() {
   const [credentials, setCredentials] = useState({
     username: "",
@@ -10,14 +11,17 @@ function Register() {
     lastname: "",
     email: "",
   });
+
   const [data, setData] = useState(null);
   const [registerMessage, setRegisterMessage] = useState("");
   const { username, password, firstname, lastname, email, image } = credentials;
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
   };
+
   const register = async () => {
     try {
       const { data } = await axios("/api/users/register", {
@@ -26,16 +30,17 @@ function Register() {
       });
       // Store it locally
       localStorage.setItem("token", data.token);
-      console.log(data.message, data.token);
+      console.log(data.message);
       setRegisterMessage("Successfully registered");
-      navigate("/login");
+        // navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
-    <div>
-      <h1>Registration form</h1>
+    <div className="Register">
+      <h1>Registration Form</h1>
       <div>
         <label>Username </label>
         <input
@@ -43,8 +48,7 @@ function Register() {
           onChange={handleChange}
           name="username"
           type="text"
-          placeholder="username"
-         
+          placeholder="Username"
         />
         <br />
         <label>Password  </label>
@@ -53,8 +57,7 @@ function Register() {
           onChange={handleChange}
           name="password"
           type="password"
-          placeholder="password"
-          
+          placeholder="Password"
         />
         <br />
         <label>Firstname  </label>
@@ -62,9 +65,8 @@ function Register() {
           value={firstname}
           onChange={handleChange}
           name="firstname"
-          type="firstname"
-          placeholder="firstname"
-         
+          type="text"
+          placeholder="Firstname"
         />
         <br />
         <label>Lastname  </label>
@@ -72,9 +74,8 @@ function Register() {
           value={lastname}
           onChange={handleChange}
           name="lastname"
-          type="lastname"
-          placeholder="lastname"
-         
+          type="text"
+          placeholder="Lastname"
         />
         <br />
         <label>Email  </label>
@@ -83,11 +84,9 @@ function Register() {
           onChange={handleChange}
           name="email"
           type="email"
-          placeholder="email"
-          
+          placeholder="Email"
         />
         <br />
-        
         <input
           value={image}
           onChange={handleChange}
@@ -104,9 +103,7 @@ function Register() {
       </div>
       {registerMessage && (
         <div className="text-center p-4">
-          <div className="alert alert-success" style={{ marginTop: "20px" }}>
-            {registerMessage}
-          </div>
+          <div className="alert alert-success" style={{ marginTop: "20px" }}>{registerMessage}</div>
         </div>
       )}
       {data && (
@@ -117,4 +114,5 @@ function Register() {
     </div>
   );
 }
+
 export default Register;
