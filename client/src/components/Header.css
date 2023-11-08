@@ -9,6 +9,7 @@
   padding: 1rem;
   position: fixed;
   height: 50px;
+  z-index: 1;
 }
 
 h1 {
